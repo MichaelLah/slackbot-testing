@@ -1,4 +1,5 @@
 import os
+import random
 from dotenv import load_dotenv
 
 from slack_bolt import App
@@ -40,6 +41,12 @@ def action_button_click(body, ack, say):
     # Acknowledge the action
     ack()
     say(f"<@{body['user']['id']}> clicked the button")
+
+@app.message("goodbye")
+def message_goodbye(say):
+    responses = ["Adios", "Au revoir", "Farewell"]
+    parting = random.choice(responses)
+    say(f"{parting}!")
 
 
 # Start your app
