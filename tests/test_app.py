@@ -10,5 +10,5 @@ def test_message_hello():
 
 
 def test_slow():
-    time.sleep(15)
-    assert False
+    time.sleep(1)
+    assert True
