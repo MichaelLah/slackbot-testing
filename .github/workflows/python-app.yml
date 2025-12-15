@@ -9,6 +9,21 @@ on:
   pull_request:
     branches: [ "main" ]
 
+
+  workflow_dispatch:
+    # Optional: Define inputs that can be passed when manually triggering the workflow
+    inputs:
+      target_branch:
+        description: 'The branch to run the tests against'
+        required: true
+        default: 'main'
+        type: string
+      run_full_suite:
+        description: 'Run the full test suite (otherwise runs only unit tests)'
+        required: false
+        default: false
+        type: boolean
+
 permissions:
   contents: read
 
