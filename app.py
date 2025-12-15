@@ -75,7 +75,7 @@ def message_michael(body, ack, say, client):
     permalink_response = client.chat_getPermalink(
         channel=channel_id, message_ts=thread_ts
     )
-    permalink = permalink_response["permalink"]
+    permalink = permalink_response['permalink']
 
     say(text=f"Looks like someone's talking about you! {permalink}", channel=michael)
 
