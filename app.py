@@ -10,6 +10,7 @@ from slack_bolt.adapter.socket_mode import SocketModeHandler
 
 # Load environment variables from .env file
 load_dotenv()
+load_dotenv(".env.local")
 
 # This sample slack application uses SocketMode
 # For the companion getting started setup guide,
