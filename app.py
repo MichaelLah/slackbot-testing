@@ -1,7 +1,6 @@
 import os
 import random
 import json
-import re
 
 from dotenv import load_dotenv
 
@@ -47,6 +46,7 @@ def action_button_click(body, ack, say):
     print(json.dumps(body))
     say(f"<@{body['user']['id']}> clicked the button")
 
+
 @app.message("goodbye")
 def message_goodbye(say):
     responses = ["Adios", "Au revoir", "Farewell"]
@@ -58,25 +58,27 @@ def message_goodbye(say):
 def message_thread(body, ack, say):
     ack()
     print(json.dumps(body))
-    channel_id = body['event']['channel']
-    thread_ts = body['event']['ts']
+    channel_id = body["event"]["channel"]
+    thread_ts = body["event"]["ts"]
 
-    say(text='hey there', channel=channel_id, thread_ts=thread_ts)
-
+    say(text="hey there", channel=channel_id, thread_ts=thread_ts)
 
 
 @app.message("michael lah")
 def message_michael(body, ack, say, client):
     ack()
     michael = "U0A2V1Z21ST"
-    channel_id = body['event']['channel']
-    thread_ts = body['event']['ts']
+    channel_id = body["event"]["channel"]
+    thread_ts = body["event"]["ts"]
 
     # Get the permalink to the message
-    permalink_response = client.chat_getPermalink(channel=channel_id, message_ts=thread_ts)
-    permalink = permalink_response['permalink']
+    permalink_response = client.chat_getPermalink(
+        channel=channel_id, message_ts=thread_ts
+    )
+    permalink = permalink_response["permalink"]
 
-    say(text=f'Looks like someone\'s talking about you! {permalink}', channel=michael)
+    say(text=f"Looks like someone's talking about you! {permalink}", channel=michael)
+
 
 # Start your app
 if __name__ == "__main__":
